@@ -14,10 +14,17 @@ class App extends Component {
   componentDidMount = async () => {
     try {
       const response = await getAllResy();
+
+      // if (!response.ok) {
+      //   throw new Error(
+      //     'There was a problem getting your reservations. Try again later!'
+      //   );
+      // }
+
       const resys = await response.json();
       this.setState({ allResy: resys });
     } catch (err) {
-      console.log(err.message);
+      this.setState({ error: err.message });
     }
   };
 
@@ -26,7 +33,7 @@ class App extends Component {
       <div className="App">
         <h1 className="app-title">Turing Cafe Reservations</h1>
         <div className="resy-form"></div>
-        {/* <div className="resy-container"></div> */}
+        {this.state.error && <h1>{this.state.error}</h1>}
         <ResyContainer allResy={this.state.allResy} />
       </div>
     );
