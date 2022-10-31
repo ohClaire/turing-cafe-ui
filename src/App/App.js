@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllResy } from '../apiCalls';
+import ResyForm from '../components/ResyForm';
 import ResyContainer from '../components/ResyContainer';
 import './App.css';
 
@@ -28,16 +29,22 @@ class App extends Component {
     }
   };
 
-  render() {
+  addResy = (request) => {
+    if (!this.state.allResy.includes(request)) {
+      this.setState({ allResy: [...this.state.allResy, request] });
+    }
+  };
+
+  render = () => {
     return (
       <div className="App">
         <h1 className="app-title">Turing Cafe Reservations</h1>
-        <div className="resy-form"></div>
+        <ResyForm addResy={this.addResy} />
         {this.state.error && <h1>{this.state.error}</h1>}
         <ResyContainer allResy={this.state.allResy} />
       </div>
     );
-  }
+  };
 }
 
 export default App;
