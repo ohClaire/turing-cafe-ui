@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { submitResy } from '../apiCalls';
 import './ResyForm.css';
 
 export default function ResyForm({ addResy }) {
@@ -25,6 +26,7 @@ export default function ResyForm({ addResy }) {
         e.preventDefault();
         addResy(resInfo);
         clearFields();
+        submitResy(resInfo);
       }}
     >
       <input
