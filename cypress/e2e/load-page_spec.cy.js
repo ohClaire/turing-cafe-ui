@@ -7,6 +7,18 @@ describe('Load page flows', () => {
 
     cy.get('.form').should('be.visible');
     cy.get('.resy-container').children().should('have.length', 3);
+    cy.contains('.name', 'Hannah');
+    cy.contains('.date', '12/29');
+    cy.contains('.time', '7:00');
+    cy.contains('.number', 10);
+    cy.contains('.name', 'Courtney');
+    cy.contains('.date', '4/5');
+    cy.contains('.time', '7:00');
+    cy.contains('.number', 5);
+    cy.contains('.name', 'Pam');
+    cy.contains('.date', '1/21');
+    cy.contains('.time', '6:00');
+    cy.contains('.number', 6);
   });
 
   it('Should show error message if data cannot be retrieved', () => {

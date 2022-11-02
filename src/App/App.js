@@ -15,10 +15,13 @@ class App extends Component {
   componentDidMount = async () => {
     try {
       const response = await getAllResy();
+      if (!response.ok) {
+        throw Error(response.status + ' : ' + response.text);
+      }
       const resys = await response.json();
       this.setState({ allResy: resys });
     } catch (err) {
-      this.setState({ error: err.message });
+      this.setState({ error: err });
     }
   };
 
