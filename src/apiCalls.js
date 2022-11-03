@@ -29,14 +29,7 @@ export const removeResy = async (resId) => {
   const url = `http://localhost:3001/api/v1/reservations/${resId}`;
   const options = {
     method: 'DELETE',
-    // headers: {
-    //   'Content-type': 'application/json',
-    // },
-    // body: null,
   };
 
   return fetch(url, options);
-
-  // const response = fetch(url, options);
-  // console.log(await (await response).json(), 'promise');
 };
