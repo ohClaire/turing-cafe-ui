@@ -14,10 +14,29 @@ export const submitResy = async (formData) => {
     };
     return fetch(url, options);
   } catch (err) {
-    errorMessage();
+    errorMessage(err);
   }
 };
 
-const errorMessage = () => {
-  return 'There was a problem making your reservation. Please try again later';
+const errorMessage = (err) => {
+  return (
+    err.status +
+    'There was a problem making your reservation. Please try again later'
+  );
+};
+
+export const removeResy = async (resId) => {
+  const url = `http://localhost:3001/api/v1/reservations/${resId}`;
+  const options = {
+    method: 'DELETE',
+    // headers: {
+    //   'Content-type': 'application/json',
+    // },
+    // body: null,
+  };
+
+  return fetch(url, options);
+
+  // const response = fetch(url, options);
+  // console.log(await (await response).json(), 'promise');
 };

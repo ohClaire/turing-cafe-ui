@@ -2,7 +2,7 @@ import React from 'react';
 import ResCard from './ResCard';
 import './ResyContainer.css';
 
-export default function ResyContainer({ allResy }) {
+export default function ResyContainer({ allResy, handleRemove }) {
   const resyCards = allResy.map((resy) => {
     return (
       <ResCard
@@ -12,6 +12,7 @@ export default function ResyContainer({ allResy }) {
         date={resy.date}
         time={resy.time}
         numGuests={resy.number}
+        handleRemove={handleRemove}
       />
     );
   });
